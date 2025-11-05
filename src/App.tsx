@@ -1,4 +1,4 @@
-import { Heart, UsersThree, ChatsCircle, Envelope } from '@phosphor-icons/react'
+import { Heart, UsersThree, ChatsCircle, Envelope, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -234,6 +234,24 @@ function App() {
                   Send Message
                 </Button>
               </form>
+
+              <Separator className="my-6" />
+
+              <div className="text-center">
+                <p className="text-sm text-muted-foreground mb-4">Follow us on social media</p>
+                <div className="flex gap-3 justify-center">
+                  <Button asChild variant="outline" size="icon" className="hover:bg-accent/10 hover:text-accent hover:border-accent">
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                      <InstagramLogo size={24} weight="fill" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="icon" className="hover:bg-primary/10 hover:text-primary hover:border-primary">
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                      <LinkedinLogo size={24} weight="fill" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
