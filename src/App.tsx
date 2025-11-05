@@ -37,16 +37,14 @@ function App() {
           </div>
         </div>
       </nav>
-
       <section className="py-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="text-primary">Hands on Youth and Family</span>{' '}
-            <span className="text-secondary">Development Services</span>
+            <span className="text-secondary"> 
+            Development Services</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            A 501(c)3 nonprofit organization dedicated to educating families and bridging gaps in children's social, emotional, and educational development.
-          </p>
+          <p className="text-xl text-muted-foreground mb-8">A 501(c)3 nonprofit organization dedicated to educating families and bridging gaps in children's social, emotional, and educational development.</p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" className="bg-accent hover:bg-accent/90">
               Get Involved
@@ -57,9 +55,7 @@ function App() {
           </div>
         </div>
       </section>
-
       <Separator className="my-12" />
-
       <section id="about" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6">
@@ -77,7 +73,6 @@ function App() {
           </p>
         </div>
       </section>
-
       <section id="programs" className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center gap-3 mb-12">
@@ -111,7 +106,6 @@ function App() {
           </Card>
         </div>
       </section>
-
       <section id="contact" className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-2xl">
           <div className="flex items-center gap-3 mb-12">
@@ -165,7 +159,6 @@ function App() {
           </Card>
         </div>
       </section>
-
       <footer className="py-12 px-4 border-t border-border">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -178,7 +171,7 @@ function App() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 export default App
