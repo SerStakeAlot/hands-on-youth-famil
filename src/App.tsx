@@ -159,7 +159,6 @@ function App() {
           </motion.div>
         )}
       </nav>
-
       <main className="pt-16">
         <section id="home" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-purple)]/5 via-[var(--brand-blue)]/5 to-[var(--brand-yellow)]/5" />
@@ -175,9 +174,7 @@ function App() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                <span style={{ color: 'var(--brand-purple)' }}>
-                  Hands On Youth & Family
-                </span>
+                <span style={{ color: 'var(--brand-purple)' }}>Hands On Youth & Family</span>
                 <br />
                 <span style={{ color: 'var(--brand-blue)' }}>
                   Development Services
@@ -189,9 +186,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
-              >
-                Educating families and bridging gaps with young children's social, emotional and educational development needs in and outside the classroom
-              </motion.p>
+              >Educating families and bridging gaps with young children's social, emotional and educational development needs in and outside the classroom</motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -203,17 +198,13 @@ function App() {
                   size="lg"
                   onClick={() => scrollToSection('about')}
                   className="bg-accent hover:bg-accent/90 text-accent-foreground transition-all hover:scale-105"
-                >
-                  Learn More
-                </Button>
+                >Learn More</Button>
                 <Button
                   size="lg"
                   variant="outline"
                   onClick={() => scrollToSection('contact')}
                   className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:scale-105"
-                >
-                  Get In Touch
-                </Button>
+                >Get In Touch</Button>
               </motion.div>
             </motion.div>
           </div>
@@ -475,7 +466,7 @@ function App() {
         </footer>
       </main>
     </div>
-  )
+  );
 }
 
 export default App
