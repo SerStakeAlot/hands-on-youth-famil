@@ -89,17 +89,97 @@ function App() {
                 A recurring mental health roundtable program
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-lg mb-6 leading-relaxed">
-                Join us for open, supportive conversations about mental health topics that affect individuals 
-                and families across all life stages. Our roundtable sessions provide a safe space to discuss 
-                challenges, share experiences, and learn from one another.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary">Mental Health</Badge>
-                <Badge variant="secondary">Family Support</Badge>
-                <Badge variant="secondary">Community</Badge>
-                <Badge variant="secondary">All Ages</Badge>
+            <CardContent className="space-y-8">
+              <div>
+                <p className="text-lg mb-6 leading-relaxed">
+                  Join us for open, supportive conversations about mental health topics that affect individuals 
+                  and families across all life stages. Our roundtable sessions provide a safe space to discuss 
+                  challenges, share experiences, and learn from one another.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <Badge variant="secondary">Mental Health</Badge>
+                  <Badge variant="secondary">Family Support</Badge>
+                  <Badge variant="secondary">Community</Badge>
+                  <Badge variant="secondary">All Ages</Badge>
+                </div>
+                <Button asChild className="bg-accent hover:bg-accent/90">
+                  <a href="https://www.eventbrite.com" target="_blank" rel="noopener noreferrer">
+                    Register on Eventbrite
+                  </a>
+                </Button>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Upcoming & Past Events</h3>
+                <div className="grid gap-4">
+                  <div className="flex gap-4 p-4 rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors">
+                    <div className="flex flex-col items-center justify-center bg-primary text-primary-foreground rounded-lg p-3 min-w-[80px]">
+                      <span className="text-2xl font-bold">Nov</span>
+                      <span className="text-3xl font-bold">1</span>
+                      <span className="text-sm">2025</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold mb-1">Falling into Place</h4>
+                      <p className="text-muted-foreground text-sm">November 1st, 2025</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 rounded-lg border border-border bg-card hover:bg-accent/5 transition-colors">
+                    <div className="flex flex-col items-center justify-center bg-secondary text-secondary-foreground rounded-lg p-3 min-w-[80px]">
+                      <span className="text-2xl font-bold">Mar</span>
+                      <span className="text-3xl font-bold">29</span>
+                      <span className="text-sm">2025</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold mb-1">High Functioning with Silent Stress</h4>
+                      <p className="text-muted-foreground text-sm">March 29th, 2025</p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 rounded-lg border border-border bg-muted/50">
+                    <div className="flex flex-col items-center justify-center bg-muted-foreground/20 text-foreground rounded-lg p-3 min-w-[80px]">
+                      <span className="text-2xl font-bold">Nov</span>
+                      <span className="text-3xl font-bold">16</span>
+                      <span className="text-sm">2024</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold mb-1">Locking Back In</h4>
+                      <p className="text-muted-foreground text-sm">November 16th, 2024</p>
+                      <Badge variant="outline" className="mt-2">Past Event</Badge>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Event Gallery</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 1</span>
+                  </div>
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 2</span>
+                  </div>
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 3</span>
+                  </div>
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 4</span>
+                  </div>
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 5</span>
+                  </div>
+                  <div className="aspect-square rounded-lg bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center border border-border">
+                    <span className="text-muted-foreground text-sm">Photo 6</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-4 text-center">
+                  Gallery placeholders - replace with actual event photos
+                </p>
               </div>
             </CardContent>
           </Card>
