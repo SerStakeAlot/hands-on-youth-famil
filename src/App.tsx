@@ -12,11 +12,21 @@ const navItems = [
   { to: '/contact', label: 'Contact' },
 ]
 
-const routerBaseName = import.meta.env.BASE_URL ?? '/'
+const routerBaseName = import.meta.env.PROD ? '/hands-on-youth-famil' : '/'
+
+const getRelativePath = (pathname: string) => {
+  if (routerBaseName === '/') return pathname
+  if (pathname.startsWith(routerBaseName)) {
+    const relative = pathname.slice(routerBaseName.length) || '/'
+    return relative.startsWith('/') ? relative : `/${relative}`
+  }
+  return pathname
+}
 
 function AppShell() {
   const location = useLocation()
   const navigate = useNavigate()
+  const mobileValue = getRelativePath(location.pathname) || '/'
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -48,7 +58,7 @@ function AppShell() {
               className="bg-transparent border border-border rounded-md px-3 py-2 text-sm"
               aria-label="Navigate to page"
               onChange={(event) => navigate(event.target.value)}
-              value={location.pathname}
+              value={mobileValue}
             >
               {navItems.map((item) => (
                 <option key={item.to} value={item.to}>
