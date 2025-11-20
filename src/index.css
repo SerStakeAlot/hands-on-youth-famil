@@ -45,6 +45,8 @@
   --ring: oklch(0.55 0.2 300);
   
   --radius: 0.75rem;
+  --font-hero-script: 'Great Vibes', 'Poppins', cursive;
+  --font-hero-display: 'Playfair Display', 'Poppins', serif;
 }
 
 @theme {
@@ -74,4 +76,15 @@
   --radius-xl: calc(var(--radius) * 2);
   --radius-2xl: calc(var(--radius) * 3);
   --radius-full: 9999px;
+}
+
+@layer components {
+  .font-hero-script {
+    font-family: var(--font-hero-script);
+    letter-spacing: 0.05em;
+  }
+  .font-hero-display {
+    font-family: var(--font-hero-display);
+    letter-spacing: 0.08em;
+  }
 }
