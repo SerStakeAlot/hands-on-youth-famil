@@ -1,47 +1,51 @@
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 
-const highlightCards = [
-  { label: 'Families Reached', value: '300+', detail: 'since founding' },
-  { label: 'Monthly Touchpoints', value: '6', detail: 'support spaces' },
-  { label: 'Community Partners', value: '12', detail: 'active collaborators' },
-  { label: 'Volunteer Network', value: '80+', detail: 'care champions' },
-]
+const ownerPortraitFiles = import.meta.glob('../assets/owner/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+const ownerPortraitUrl = Object.values(ownerPortraitFiles)[0]
 
 export function Home() {
   return (
     <section className="py-14 sm:py-20 px-4">
-      <div className="container mx-auto text-center max-w-4xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80 mb-4">Mobile-first experience</p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-          <span className="text-primary block font-hero-script">Hands On Youth & Family</span>
-          <span className="text-secondary block font-hero-script">Project Inc.</span>
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed">
-          A 501(c)3 nonprofit uplifting families with culturally rooted programming, mental health support,
-          and accessible education spaces designed to fit right into busy, on-the-go lives.
-        </p>
-        <div className="flex gap-3 sm:gap-4 justify-center flex-wrap">
-          <Button size="lg" className="w-full sm:w-auto bg-accent hover:bg-accent/90" asChild>
-            <Link to="/contact">Get Involved</Link>
-          </Button>
-          <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
-            <Link to="/programs">Learn More</Link>
-          </Button>
-        </div>
-
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-left">
-          {highlightCards.map((card) => (
+      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-border/60 bg-background shadow-2xl">
+        {ownerPortraitUrl && (
+          <div className="absolute inset-0">
             <div
-              key={card.label}
-              className="rounded-2xl border border-border/60 bg-card/70 p-4 text-center shadow-sm"
-            >
-              <p className="text-2xl font-bold text-primary sm:text-3xl">{card.value}</p>
-              <p className="text-sm font-semibold text-foreground">{card.label}</p>
-              <p className="text-xs text-muted-foreground mt-1">{card.detail}</p>
-            </div>
-          ))}
+              className="absolute inset-0 scale-105 bg-cover bg-center"
+              style={{ backgroundImage: `url(${ownerPortraitUrl})`, backgroundPosition: '55% 30%' }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
+          </div>
+        )}
+        <div className="relative z-10 px-6 py-12 text-center sm:px-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+            <span className="text-primary block font-hero-script">Hands On Youth & Family</span>
+            <span className="text-secondary block font-hero-script">Project Inc.</span>
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 leading-relaxed">
+            Educating families and bridging gaps with young children&apos;s social, emotional, and educational development
+            needs in and outside the classroom.
+          </p>
+          <div className="flex gap-3 sm:gap-4 justify-center flex-wrap">
+            <Button size="lg" className="w-full sm:w-auto bg-accent hover:bg-accent/90" asChild>
+              <Link to="/contact">Get Involved</Link>
+            </Button>
+            <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+              <Link to="/programs">Learn More</Link>
+            </Button>
+          </div>
         </div>
+        {!ownerPortraitUrl && (
+          <div className="relative z-10 border-t border-border/60 bg-card/70 px-6 py-6 text-center text-sm text-muted-foreground">
+            Drop a transparent cut-out into
+            <code className="mx-1 rounded bg-background/80 px-1 py-0.5 text-xs">src/assets/owner</code>
+            to see it bloom in the background of this hero section.
+          </div>
+        )}
       </div>
     </section>
   )

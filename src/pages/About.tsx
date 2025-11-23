@@ -1,5 +1,5 @@
 import { UsersThree } from '@phosphor-icons/react'
-import hoyfLogo from '@/assets/hands-on-youth-logo.jpeg'
+import hoyPhoto from '@/assets/programs/hoy.jpg'
 
 const supportPillars = [
   'Trauma-informed coaching',
@@ -17,9 +17,9 @@ export function About() {
             <div className="relative w-full max-w-sm">
               <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-accent/20 blur-xl" aria-hidden="true" />
               <img
-                src={hoyfLogo}
-                alt="Hands On Youth & Family Project Inc. logo"
-                className="relative z-10 w-full rounded-3xl border border-border bg-card/80 p-5 shadow-xl"
+                src={hoyPhoto}
+                alt="Hands On Youth & Family Project founder standing beside program banner"
+                className="relative z-10 w-full rounded-3xl border border-border bg-card/80 object-cover shadow-xl"
               />
             </div>
           </div>
@@ -31,12 +31,15 @@ export function About() {
               <p className="text-sm uppercase tracking-[0.25em] text-muted-foreground">Built with families first</p>
             </div>
             <p className="text-base sm:text-lg leading-relaxed text-foreground/90 mb-5">
-              At Hands On Youth & Family Project Inc., every program is designed with a phone-in-hand perspective:
-              quick to access, culturally mindful, and flexible for caregivers balancing multiple responsibilities.
+              At Hands On Youth & Family Project Inc., we believe every child deserves the opportunity to thrive.
+              Our mission is to empower families with the knowledge, resources, and support they need to foster healthy
+              social, emotional, and educational development in children of all ages.
             </p>
             <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
-              As a dedicated 501(c)3 nonprofit, we walk alongside families, educators, and community partners to
-              co-create trusted spaces for healing, learning, and sustained joy.
+              As a dedicated 501(c)3 nonprofit organization, we work closely with families, educators, and community
+              members to create meaningful connections and lasting positive change. We specialize in advocacy for
+              children navigating mental health conditions such as autism, ADHD, and anxiety, ensuring they receive the
+              wraparound support they deserve.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-2">

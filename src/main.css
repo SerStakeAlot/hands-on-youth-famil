@@ -28,6 +28,22 @@
   }
 }
 
+/* Gallery belt animation */
+@layer components {
+  @keyframes gallery-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .gallery-marquee-wrapper { position: relative; overflow: hidden; width: 100%; }
+  .gallery-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: gallery-marquee 40s linear infinite;
+  }
+  .gallery-marquee-item { flex: 0 0 auto; }
+  .gallery-marquee-wrapper:hover .gallery-marquee-track { animation-play-state: paused; }
+}
+
 /*
   ---break---
 */
