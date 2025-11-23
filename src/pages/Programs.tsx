@@ -129,7 +129,6 @@ export function Programs() {
                         className="h-full w-full object-cover"
                         autoPlay
                         loop
-                        muted
                         playsInline
                         controls
                       />
