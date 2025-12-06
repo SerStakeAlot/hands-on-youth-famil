@@ -13,7 +13,15 @@ const navItems = [
   { to: '/contact', label: 'Contact' },
 ]
 
-const routerBaseName = import.meta.env.PROD ? '/hands-on-youth-famil' : '/'
+const detectBaseName = () => {
+  if (typeof window === 'undefined') {
+    return import.meta.env.PROD ? '/hands-on-youth-famil' : '/'
+  }
+  const path = window.location.pathname
+  return path.startsWith('/hands-on-youth-famil') ? '/hands-on-youth-famil' : '/'
+}
+
+const routerBaseName = detectBaseName()
 
 const getRelativePath = (pathname: string) => {
   if (routerBaseName === '/') return pathname
