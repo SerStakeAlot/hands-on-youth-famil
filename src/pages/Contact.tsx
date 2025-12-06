@@ -27,7 +27,7 @@ export function Contact() {
                 support need and we will follow up with next steps.
               </p>
               <Button asChild className="w-full sm:w-auto bg-accent hover:bg-accent/90">
-                <a href="mailto:hello@handsonyouth.org">Email hello@handsonyouth.org</a>
+                <a href="mailto:Handsonyouthcorp@gmail.com">Email Handsonyouthcorp@gmail.com</a>
               </Button>
             </div>
 
@@ -52,7 +52,7 @@ export function Contact() {
               <div className="grid grid-cols-1 gap-3">
                 <div className="rounded-2xl border border-border/70 bg-card/70 p-4 text-center sm:text-left">
                   <p className="text-xs uppercase tracking-wide text-muted-foreground">Email</p>
-                  <p className="text-base font-semibold">hello@handsonyouth.org</p>
+                  <p className="text-base font-semibold">Handsonyouthcorp@gmail.com</p>
                 </div>
               </div>
             </div>

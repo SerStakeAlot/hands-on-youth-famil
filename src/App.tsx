@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, NavLink, Route, Routes, Link, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import hoyfLogo from './assets/hands-on-youth-logo.jpeg'
 import { About } from './pages/About'
@@ -27,6 +28,36 @@ function AppShell() {
   const location = useLocation()
   const navigate = useNavigate()
   const mobileValue = getRelativePath(location.pathname) || '/'
+
+  useEffect(() => {
+    const absoluteLogoUrl = new URL(hoyfLogo, window.location.origin).href
+    const ensureMeta = (attributes: { property?: string; name?: string }, content: string) => {
+      const key = attributes.property ? 'property' : 'name'
+      const value = (attributes.property ?? attributes.name) as string
+      let meta = document.head.querySelector(`meta[${key}="${value}"]`) as HTMLMetaElement | null
+      if (!meta) {
+        meta = document.createElement('meta')
+        meta.setAttribute(key, value)
+        document.head.appendChild(meta)
+      }
+      meta.setAttribute('content', content)
+    }
+
+    const siteTitle = 'Hands On Youth & Family Project Inc.'
+    const siteDescription =
+      'Educating families and bridging gaps with culturally rooted programs for children across Atlanta.'
+    const siteUrl = 'https://handsonyouth.org'
+
+    ensureMeta({ property: 'og:title' }, siteTitle)
+    ensureMeta({ property: 'og:description' }, siteDescription)
+    ensureMeta({ property: 'og:url' }, siteUrl)
+    ensureMeta({ property: 'og:image' }, absoluteLogoUrl)
+    ensureMeta({ property: 'og:type' }, 'website')
+    ensureMeta({ name: 'twitter:card' }, 'summary_large_image')
+    ensureMeta({ name: 'twitter:title' }, siteTitle)
+    ensureMeta({ name: 'twitter:description' }, siteDescription)
+    ensureMeta({ name: 'twitter:image' }, absoluteLogoUrl)
+  }, [])
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
