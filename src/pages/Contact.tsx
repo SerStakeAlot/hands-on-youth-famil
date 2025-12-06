@@ -49,12 +49,6 @@ export function Contact() {
                   </Button>
                 </div>
               </div>
-              <div className="grid grid-cols-1 gap-3">
-                <div className="rounded-2xl border border-border/70 bg-card/70 p-4 text-center sm:text-left">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">Email</p>
-                  <p className="text-base font-semibold">Handsonyouthcorp@gmail.com</p>
-                </div>
-              </div>
             </div>
 
             <div className="space-y-3">
