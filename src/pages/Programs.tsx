@@ -34,6 +34,7 @@ const eventCards = [
     detail: 'December 5–19, 2025 — Donate coats and blankets',
     accent: 'primary',
     isPast: false,
+    isCurrent: true,
   },
   {
     month: 'Nov',
@@ -75,7 +76,9 @@ function EventDateBadge({ event }: { event: EventCard }) {
         : 'bg-muted/70 text-foreground'
 
   return (
-    <div className={`flex items-center justify-between sm:flex-col sm:items-center sm:justify-center rounded-xl p-3 min-w-[90px] text-center ${baseStyle}`}>
+    <div
+      className={`flex items-center justify-between sm:flex-col sm:items-center sm:justify-center rounded-xl p-3 min-w-[90px] text-center ${baseStyle} ${event.isCurrent ? 'ring-2 ring-amber-400 shadow-[0_0_15px_rgba(217,189,110,0.35)]' : ''}`}
+    >
       <div className="text-base font-semibold">{event.month}</div>
       <div className="text-3xl font-bold leading-none">{event.day}</div>
       <div className="text-xs uppercase tracking-wide">{event.year}</div>
@@ -177,7 +180,7 @@ export function Programs() {
                 {eventCards.map((event) => (
                   <div
                     key={event.title}
-                    className="flex flex-col sm:flex-row gap-4 p-4 rounded-2xl border border-border bg-card/80 hover:bg-accent/5 transition-colors"
+                    className={`flex flex-col sm:flex-row gap-4 p-4 rounded-2xl border bg-card/80 hover:bg-accent/5 transition-colors ${event.isCurrent ? 'border-amber-400 shadow-[0_15px_45px_rgba(217,189,110,0.25)]' : 'border-border'}`}
                   >
                     <EventDateBadge event={event} />
                     <div className="flex-1 text-left">
