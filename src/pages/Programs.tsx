@@ -27,6 +27,15 @@ const galleryImages = Object.values(galleryFiles)
 
 const eventCards = [
   {
+    month: 'Dec',
+    day: '5',
+    year: '2025',
+    title: 'Coat & Blankets Drive',
+    detail: 'December 5–19, 2025 — Donate coats and blankets',
+    accent: 'primary',
+    isPast: false,
+  },
+  {
     month: 'Nov',
     day: '1',
     year: '2025',
