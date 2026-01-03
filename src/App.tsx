@@ -8,7 +8,6 @@ import { Programs } from './pages/Programs'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import noticeOne from './assets/programs/gallery/notice 1.jpeg'
-import noticeTwo from './assets/programs/gallery/notice.jpeg'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -37,8 +36,7 @@ const getRelativePath = (pathname: string) => {
 }
 
 function AppShell() {
-  const [showNotices, setShowNotices] = useState(false)
-  const [noticeStep, setNoticeStep] = useState<0 | 1>(0)
+  const [showNotice, setShowNotice] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const mobileValue = getRelativePath(location.pathname) || '/'
@@ -74,45 +72,24 @@ function AppShell() {
   }, [])
 
   useEffect(() => {
-    try {
-      const key = 'hoyf_notice_sequence_2025_dismissed'
-      const dismissed = localStorage.getItem(key)
-      if (!dismissed) {
-        setShowNotices(true)
-      }
-    } catch {}
+    setShowNotice(true)
   }, [])
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Dialog open={showNotices} onOpenChange={(open) => {
-        if (!open) {
-          try { localStorage.setItem('hoyf_notice_sequence_2025_dismissed', 'true') } catch {}
-          setShowNotices(false)
-          setNoticeStep(0)
-        }
-      }}>
+      <Dialog open={showNotice} onOpenChange={setShowNotice}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle>{noticeStep === 0 ? 'Happy Holidays & Thank You!' : 'Coat & Blankets Drive'}</DialogTitle>
+            <DialogTitle>Happy Holidays & Thank You!</DialogTitle>
             <DialogDescription>
-              {noticeStep === 0
-                ? 'We appreciate your support throughout the year.'
-                : 'December 5–19: Help keep families warm by donating coats and blankets.'}
+              We appreciate your support throughout the year.
             </DialogDescription>
           </DialogHeader>
           <div className="rounded-xl overflow-hidden border border-border bg-muted/40">
-            <img src={noticeStep === 0 ? noticeOne : noticeTwo} alt={noticeStep === 0 ? 'Holiday thank you notice' : 'Coat & blankets drive notice'} className="w-full h-auto object-cover" />
+            <img src={noticeOne} alt="Holiday thank you notice" className="w-full h-auto object-cover" />
           </div>
           <DialogFooter className="mt-4">
-            {noticeStep === 0 ? (
-              <Button onClick={() => setNoticeStep(1)} className="w-full sm:w-auto">Continue</Button>
-            ) : (
-              <div className="flex gap-2 w-full sm:w-auto">
-                <Button variant="secondary" onClick={() => setNoticeStep(0)} className="flex-1 sm:flex-none">Back</Button>
-                <Button onClick={() => setShowNotices(false)} className="flex-1 sm:flex-none">Close</Button>
-              </div>
-            )}
+            <Button onClick={() => setShowNotice(false)} className="w-full sm:w-auto">Close</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

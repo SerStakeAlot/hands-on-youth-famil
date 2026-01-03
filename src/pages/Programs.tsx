@@ -31,10 +31,9 @@ const eventCards = [
     day: '5',
     year: '2025',
     title: 'Coat & Blankets Drive',
-    detail: 'December 5–19, 2025 — Donate coats and blankets',
+    detail: 'December 5–19, 2025 — Thank you for donating coats and blankets',
     accent: 'primary',
-    isPast: false,
-    isCurrent: true,
+    isPast: true,
   },
   {
     month: 'Nov',
