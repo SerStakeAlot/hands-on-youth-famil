@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter, NavLink, Route, Routes, Link, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import hoyfLogo from './assets/hands-on-youth-logo.jpeg'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
 import { Home } from './pages/Home'
 import { Programs } from './pages/Programs'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import noticeOne from './assets/programs/gallery/notice 1.jpeg'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -36,7 +33,6 @@ const getRelativePath = (pathname: string) => {
 }
 
 function AppShell() {
-  const [showNotice, setShowNotice] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const mobileValue = getRelativePath(location.pathname) || '/'
@@ -71,28 +67,8 @@ function AppShell() {
     ensureMeta({ name: 'twitter:image' }, absoluteLogoUrl)
   }, [])
 
-  useEffect(() => {
-    setShowNotice(true)
-  }, [])
-
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Dialog open={showNotice} onOpenChange={setShowNotice}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Happy Holidays & Thank You!</DialogTitle>
-            <DialogDescription>
-              We appreciate your support throughout the year.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="rounded-xl overflow-hidden border border-border bg-muted/40">
-            <img src={noticeOne} alt="Holiday thank you notice" className="w-full h-auto object-cover" />
-          </div>
-          <DialogFooter className="mt-4">
-            <Button onClick={() => setShowNotice(false)} className="w-full sm:w-auto">Close</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">

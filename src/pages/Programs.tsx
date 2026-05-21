@@ -1,8 +1,31 @@
-import { ChatsCircle } from '@phosphor-icons/react'
+import { ChatsCircle, BookOpen, PuzzlePiece, ForkKnife, Users } from '@phosphor-icons/react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+
+const afterschoolOfferings = [
+  {
+    icon: BookOpen,
+    title: 'Tutoring',
+    detail: 'Homework help and academic coaching across core subjects.',
+  },
+  {
+    icon: PuzzlePiece,
+    title: 'Personalized Planning for Autism Scholars',
+    detail: 'Individualized learning plans tailored to each scholar on the spectrum.',
+  },
+  {
+    icon: ForkKnife,
+    title: 'Healthy Snack & Dinner',
+    detail: 'Nutritious meals to fuel learning and growth every afternoon.',
+  },
+  {
+    icon: Users,
+    title: 'Family Engagement',
+    detail: 'Workshops and check-ins that keep caregivers connected to progress.',
+  },
+]
 
 const letsTalkVideoFiles = import.meta.glob('../assets/programs/*.{mp4,MP4,webm,WEBM,mov,MOV}', {
   eager: true,
@@ -93,6 +116,37 @@ export function Programs() {
           <ChatsCircle size={40} className="text-primary" weight="duotone" />
           <h2 className="text-3xl sm:text-4xl font-bold">Our Programs</h2>
         </div>
+
+        <Card className="border-t-4 border-t-primary mb-10">
+          <CardHeader className="text-center sm:text-left">
+            <CardTitle className="text-3xl flex flex-col sm:flex-row sm:items-center gap-3">
+              <BookOpen size={32} className="text-primary" weight="fill" />
+              <span>Afterschool Enrichment Program</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <p className="text-base sm:text-lg leading-relaxed">
+              A safe, structured afterschool space where scholars get academic support, nourishing meals, and
+              individualized planning—while families stay engaged every step of the way.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {afterschoolOfferings.map(({ icon: Icon, title, detail }) => (
+                <div
+                  key={title}
+                  className="flex gap-4 rounded-2xl border border-border bg-card/80 p-4 hover:bg-accent/5 transition-colors"
+                >
+                  <div className="shrink-0 rounded-xl bg-primary/10 p-3">
+                    <Icon size={28} className="text-primary" weight="duotone" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg leading-tight mb-1">{title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         <Card className="border-t-4 border-t-accent">
           <CardHeader className="text-center sm:text-left">

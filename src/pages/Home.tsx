@@ -1,5 +1,14 @@
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
+import { BookOpen, PuzzlePiece, ForkKnife, Users } from '@phosphor-icons/react'
+import { Reviews } from '@/components/Reviews'
+
+const afterschoolHighlights = [
+  { icon: BookOpen, label: 'Tutoring' },
+  { icon: PuzzlePiece, label: 'Personalized Planning for Autism Scholars' },
+  { icon: ForkKnife, label: 'Healthy Snack & Dinner' },
+  { icon: Users, label: 'Family Engagement' },
+]
 
 const ownerPortraitFiles = import.meta.glob('../assets/owner/*.{png,jpg,jpeg,webp,svg}', {
   eager: true,
@@ -48,7 +57,30 @@ export function Home() {
             </div>
           )}
         </div>
+        <div className="mt-12 rounded-3xl border border-border/60 bg-card/70 px-6 py-8 sm:px-10 sm:py-10 text-left shadow-sm">
+          <div className="text-center sm:text-left mb-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-2">Now Enrolling</p>
+            <h2 className="text-2xl sm:text-3xl font-bold">Afterschool Enrichment Program</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {afterschoolHighlights.map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-3 rounded-2xl border border-border/60 bg-background/80 px-4 py-3"
+              >
+                <Icon size={24} className="text-primary shrink-0" weight="duotone" />
+                <span className="text-sm sm:text-base font-medium">{label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 text-center sm:text-left">
+            <Button variant="outline" asChild>
+              <Link to="/programs">See program details</Link>
+            </Button>
+          </div>
+        </div>
       </div>
+      <Reviews />
     </section>
   )
 }
