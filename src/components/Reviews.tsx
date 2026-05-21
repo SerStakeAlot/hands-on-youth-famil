@@ -1,10 +1,13 @@
 import { FormEvent, useEffect, useState } from 'react'
-import { Star } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
+import { Star, Quotes, ArrowRight } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import { supabase, isSupabaseConfigured, Review } from '@/lib/supabase'
+import { recommendations } from '@/data/recommendations'
 
 function StarRating({
   value,
@@ -106,6 +109,53 @@ export function Reviews() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-2">Community Reviews</h2>
           <p className="text-muted-foreground">Hear from the families we serve — and share your own story.</p>
         </div>
+
+        {recommendations.length > 0 && (
+          <div className="mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
+              <div>
+                <h3 className="text-xl font-semibold">Featured Letters of Recommendation</h3>
+                <p className="text-sm text-muted-foreground">Heartfelt words from families and partners.</p>
+              </div>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/recommendations">
+                  Read all letters
+                  <ArrowRight className="ml-2" size={16} />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {recommendations.slice(0, 4).map((rec, idx) => (
+                <Card key={idx} className="bg-card/80 border-l-4 border-l-accent">
+                  <CardContent className="p-5">
+                    <Quotes size={20} className="text-accent mb-2" weight="fill" />
+                    <p className="text-sm leading-relaxed italic mb-3 line-clamp-4">
+                      “{rec.excerpt}”
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-sm font-semibold">{rec.name}</span>
+                      {rec.organization && (
+                        <Badge variant="outline" className="text-xs bg-primary/5 text-primary border-primary/20">
+                          {rec.organization}
+                        </Badge>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">{rec.role}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link
+                to="/recommendations"
+                className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+              >
+                See all {recommendations.length} letters of recommendation
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        )}
 
         {!isSupabaseConfigured ? (
           <Card className="border-amber-400/50 bg-amber-50/40 dark:bg-amber-950/20">

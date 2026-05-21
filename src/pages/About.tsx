@@ -1,4 +1,6 @@
-import { UsersThree } from '@phosphor-icons/react'
+import { UsersThree, Quotes } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
 import hoyPhoto from '@/assets/programs/hoy.jpg'
 
 const supportPillars = [
@@ -51,6 +53,15 @@ export function About() {
                   {pillar}
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 flex justify-center md:justify-start">
+              <Button asChild variant="outline">
+                <Link to="/recommendations">
+                  <Quotes className="mr-2" size={18} weight="duotone" />
+                  Read Letters of Recommendation
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

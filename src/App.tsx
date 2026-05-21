@@ -6,6 +6,7 @@ import { Contact } from './pages/Contact'
 import { Gallery } from './pages/Gallery'
 import { Home } from './pages/Home'
 import { Programs } from './pages/Programs'
+import { Recommendations } from './pages/Recommendations'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -115,6 +116,7 @@ function AppShell() {
           <Route path="/about" element={<About />} />
           <Route path="/programs" element={<Programs />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
