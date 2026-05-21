@@ -3,6 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes, Link, useLocation, useNavigate, 
 import hoyfLogo from './assets/hands-on-youth-logo.jpeg'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
+import { Gallery } from './pages/Gallery'
 import { Home } from './pages/Home'
 import { Programs } from './pages/Programs'
 
@@ -113,6 +114,7 @@ function AppShell() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/programs" element={<Programs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

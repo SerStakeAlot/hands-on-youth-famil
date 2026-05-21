@@ -73,9 +73,12 @@ export function Home() {
               </div>
             ))}
           </div>
-          <div className="mt-6 text-center sm:text-left">
+          <div className="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
             <Button variant="outline" asChild>
               <Link to="/programs">See program details</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/gallery">View Photo Gallery</Link>
             </Button>
           </div>
         </div>

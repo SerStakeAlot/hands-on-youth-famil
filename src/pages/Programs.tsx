@@ -1,8 +1,11 @@
-import { ChatsCircle, BookOpen, PuzzlePiece, ForkKnife, Users } from '@phosphor-icons/react'
+import { useState } from 'react'
+import { ChatsCircle, BookOpen, PuzzlePiece, ForkKnife, Users, Images } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 
 const afterschoolOfferings = [
   {
@@ -109,6 +112,9 @@ function EventDateBadge({ event }: { event: EventCard }) {
 }
 
 export function Programs() {
+  const [momentsOpen, setMomentsOpen] = useState(false)
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+
   return (
     <section className="py-16 sm:py-20 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -144,6 +150,14 @@ export function Programs() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="pt-2">
+              <Button asChild variant="outline">
+                <Link to="/gallery">
+                  <Images className="mr-2" size={18} weight="duotone" />
+                  View Photo Gallery
+                </Link>
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -251,10 +265,26 @@ export function Programs() {
         </Card>
 
         <div className="mt-16">
-          <h3 className="text-xl font-semibold mb-4 text-center">Program Moments</h3>
-          <div
-            className="gallery-marquee-wrapper rounded-3xl border border-border bg-card/70 backdrop-blur px-2 py-4"
-            aria-label="Scrolling gallery of program photos"
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-4">
+            <h3 className="text-xl font-semibold text-center sm:text-left">Program Moments</h3>
+            {galleryImages.length > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setMomentsOpen(true)}
+                className="self-center sm:self-auto"
+              >
+                <Images className="mr-2" size={16} weight="duotone" />
+                View All Moments
+              </Button>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={() => galleryImages.length > 0 && setMomentsOpen(true)}
+            className="gallery-marquee-wrapper block w-full rounded-3xl border border-border bg-card/70 backdrop-blur px-2 py-4 text-left transition-shadow hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-default"
+            aria-label="Open program moments gallery"
+            disabled={galleryImages.length === 0}
           >
             {galleryImages.length > 0 ? (
               <div className="gallery-marquee-track">
@@ -278,14 +308,62 @@ export function Programs() {
                   gallery empty
                 </span>
                 <p className="max-w-md leading-relaxed">
-                  Drag up to 15 photos into
+                  Drag photos into
                   <code className="mx-1 rounded bg-background/80 px-1 py-0.5 text-xs">src/assets/programs/gallery</code>
                   and refresh to see a looping conveyor belt of program highlights.
                 </p>
               </div>
             )}
-          </div>
+          </button>
         </div>
+
+        <Dialog open={momentsOpen} onOpenChange={setMomentsOpen}>
+          <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Images size={24} className="text-primary" weight="duotone" />
+                Program Moments
+              </DialogTitle>
+              <DialogDescription>
+                Moments from our programs. Click any photo to enlarge.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="overflow-y-auto flex-1 -mx-2 px-2">
+              <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+                {galleryImages.map((src, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setLightboxSrc(src)}
+                    className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-muted shadow-sm hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <img
+                      src={src}
+                      alt={`Program moment ${idx + 1}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={!!lightboxSrc} onOpenChange={(open) => !open && setLightboxSrc(null)}>
+          <DialogContent className="max-w-4xl bg-transparent border-none shadow-none p-0">
+            <DialogHeader className="sr-only">
+              <DialogTitle>Enlarged program photo</DialogTitle>
+            </DialogHeader>
+            {lightboxSrc && (
+              <img
+                src={lightboxSrc}
+                alt="Program moment enlarged"
+                className="w-full h-auto max-h-[85vh] object-contain rounded-xl"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   )
