@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChatsCircle, BookOpen, PuzzlePiece, ForkKnife, Users, Images } from '@phosphor-icons/react'
+import { ChatsCircle, BookOpen, PuzzlePiece, ForkKnife, Users, Images, Sun, MapPin } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,11 @@ import { Separator } from '@/components/ui/separator'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 
 const afterschoolOfferings = [
+  {
+    icon: Sun,
+    title: 'Before & After Care',
+    detail: 'Flexible morning and afternoon care so families have reliable coverage on either side of the school day.',
+  },
   {
     icon: BookOpen,
     title: 'Tutoring',
@@ -135,6 +140,15 @@ export function Programs() {
               A safe, structured afterschool space where scholars get academic support, nourishing meals, and
               individualized planning—while families stay engaged every step of the way.
             </p>
+            <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+              <div className="flex items-center gap-2 text-primary">
+                <MapPin size={20} weight="fill" />
+                <span className="font-semibold">Serving all Atlanta Metro area schools</span>
+              </div>
+              <span className="text-sm text-muted-foreground">
+                Before &amp; after care available — flexible coverage to fit your family's schedule.
+              </span>
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {afterschoolOfferings.map(({ icon: Icon, title, detail }) => (
                 <div

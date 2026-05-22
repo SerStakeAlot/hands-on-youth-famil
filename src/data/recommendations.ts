@@ -16,9 +16,37 @@ export type Recommendation = {
   fullText?: string
   file?: string
   email?: string
+  phone?: string
+  featured?: boolean
 }
 
 export const recommendations: Recommendation[] = [
+  {
+    name: 'Stella Wilson',
+    role: 'Owner',
+    organization: 'Kiddie Kove Learning Center',
+    source: 'Letter',
+    date: 'May 19, 2026',
+    email: 'info@kiddiekovelearning.org',
+    phone: '470-749-8832',
+    featured: true,
+    excerpt:
+      'Kiddie Kove Learning Center utilizes the services of Hands on Youth to provide additional support and assistance for children with behavioral challenges, as well as support for our after-school program operations.',
+    fullText: `Verification of Services Letter
+
+To Whom It May Concern:
+
+This letter serves as confirmation that Kiddie Kove Learning Center utilizes the services of Hands on Youth to provide additional support and assistance for children with behavioral challenges, as well as support for our after-school program operations.
+
+Hands on Youth provides behavioral support strategies, enrichment activities, and structured after-school services designed to help scholars succeed socially, emotionally, and academically in a positive environment.
+
+We value the partnership and services provided by Hands on Youth and appreciate their continued commitment to supporting the children and families we serve. Please contact our office if additional information is needed.
+
+Sincerely,
+Stella Wilson
+Owner
+Kiddie Kove Learning Center`,
+  },
   {
     name: 'Asha el-Shair',
     role: 'Dramatic Writing and Writer’s Workshop Instructor',
@@ -235,6 +263,22 @@ I strongly recommend Ms. Hile and am confident that she will continue to make a 
 
 Sincerely,
 Shalimar Cuevas`,
+  },
+  {
+    name: 'Parent of Tajiri',
+    role: 'Parent',
+    source: 'Letter',
+    excerpt:
+      'My son came home every day more wiser and more smarter, expressing himself and saying things I never heard him say before. I would always ask who taught you that word and he will proudly say Ms. Lowe.',
+    fullText: `This letter is to express my appreciation for my son’s teacher Ms. Lowe and to express the positivity she impacted on my son and myself throughout the school year.
+
+From the beginning Ms. Lowe created an open and comfortable environment for both parents and children. She expressed to me her goal for the school year with each child. She educated me on her educational background which made me more comfortable with trusting her to teach and lead my son.
+
+What stood out the most to me was my son coming home every day more wiser and more smarter. Expressing himself and saying things I never heard him say before. I would always ask who taught you that word and he will proudly say Ms. Lowe. That alone made me as a parent gravitate towards her and want to really know her as a person.
+
+After speaking to her more and more and growing closely to her I was able to understand that her love for her students is unconditional. She protects them as a Teacher and a mother. She assures that the children are being challenged so that they can be more prepared in life when it’s time to move along and grow without her.
+
+We hope that being without her is not an option though. Me and my son Tajiri love Ms. Lowe. I wouldn’t have asked for a better guardian while my son is left at school without me for long hours of the day. Thank you for your outstanding work.`,
   },
 ]
 

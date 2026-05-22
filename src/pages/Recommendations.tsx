@@ -9,9 +9,26 @@ import { recommendations, Recommendation } from '@/data/recommendations'
 function RecommendationCard({ rec }: { rec: Recommendation }) {
   const [expanded, setExpanded] = useState(false)
   return (
-    <Card className="bg-card/90 shadow-sm hover:shadow-md transition-shadow">
+    <Card
+      className={
+        rec.featured
+          ? 'bg-card shadow-md hover:shadow-lg transition-shadow ring-2 ring-primary/40 overflow-hidden'
+          : 'bg-card/90 shadow-sm hover:shadow-md transition-shadow'
+      }
+    >
+      {rec.featured && rec.organization && (
+        <div className="bg-gradient-to-r from-primary to-accent px-6 py-3 sm:px-8 sm:py-4 text-primary-foreground flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Badge className="bg-white/20 hover:bg-white/25 text-primary-foreground border-white/30 uppercase tracking-wide text-[10px]">
+              Featured Partner
+            </Badge>
+            <span className="font-semibold text-base sm:text-lg">{rec.organization}</span>
+          </div>
+          <span className="text-xs sm:text-sm opacity-90">Verification of Services</span>
+        </div>
+      )}
       <CardContent className="p-6 sm:p-8">
-        {rec.organization && (
+        {rec.organization && !rec.featured && (
           <Badge className="mb-3 bg-primary/10 text-primary hover:bg-primary/15 border-primary/20">
             From {rec.organization}
           </Badge>
@@ -40,6 +57,14 @@ function RecommendationCard({ rec }: { rec: Recommendation }) {
                   className="text-xs text-primary hover:underline"
                 >
                   {rec.email}
+                </a>
+              )}
+              {rec.phone && (
+                <a
+                  href={`tel:${rec.phone.replace(/[^\d+]/g, '')}`}
+                  className="text-xs text-primary hover:underline"
+                >
+                  {rec.phone}
                 </a>
               )}
             </div>
